@@ -1,14 +1,16 @@
 #!/bin/sh
 
 # Setting Variables
+# Get WAN Addres from Router
 WANIP=${1}
+# Data from your Account and Domain
 USER=$(USERNAME)
 PASSWD=$(PASSWORD)
 DOMAIN=$(DOMAIN)
 HOSTNAME=$(HOSTANME)
 
 # Get WAN Addres from NVRAM
-#WANIP=$(nvram get wan0_ipaddr)
+# WANIP=$(nvram get wan0_ipaddr)
 
 # Get WAN externally
 # WANIP=$(curl --silent http://api.ipify.org/)
