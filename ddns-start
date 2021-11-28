@@ -17,7 +17,6 @@ HOSTNAME=$(HOSTANME)
 
 # Updating IP
 URL="https://dinahosting.com/special/api.php?AUTH_USER=$USER&AUTH_PWD=$PASSWD&domain=$DOMAIN&hostname=$HOSTNAME&ip=$WANIP&oldIp=&command=Domain_Zone_UpdateTypeA"
-# Getting Answer
 ANSWER=$(curl $URL | awk "FNR==3")
 
 # Reporting Answer to router
