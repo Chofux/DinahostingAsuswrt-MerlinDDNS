@@ -1,0 +1,31 @@
+#!/bin/sh
+
+# Setting Variables
+WANIP=${1}
+USER=$(USERNAME)
+PASSWD=$(PASSWORD)
+DOMAIN=$(DOMAIN)
+HOSTNAME=$(HOSTANME)
+
+# Get WAN Addres from NVRAM
+#WANIP=$(nvram get wan0_ipaddr)
+
+# Get WAN externally
+# WANIP=$(curl --silent http://api.ipify.org/)
+
+# Updating IP
+URL="https://dinahosting.com/special/api.php?AUTH_USER=$USER&AUTH_PWD=$PASSWD&domain=$DOMAIN&hostname=$HOSTNAME&ip=$WANIP&oldIp=&command=Domain_Zone_UpdateTypeA"
+# Getting Answer
+ANSWER=$(curl $URL | awk "FNR==3")
+
+# Reporting Answer to router
+if [ "$ANSWER" == "message = 'Success.'" ];
+then
+    #echo "update success"
+    /sbin/ddns_custom_updated 1
+else
+    #echo "update failure"
+    /sbin/ddns_custom_updated 0
+fi
+
+#Dont forget chmod +x ddns-start
