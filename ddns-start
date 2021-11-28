@@ -27,5 +27,3 @@ else
     #echo "update failure"
     /sbin/ddns_custom_updated 0
 fi
-
-#Dont forget chmod +x ddns-start
